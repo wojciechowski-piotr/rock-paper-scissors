@@ -1,0 +1,9 @@
+@import 'reset.scss';
+@import 'variables.scss';
+@import 'mixins.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
