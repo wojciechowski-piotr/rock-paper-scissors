@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,50 @@
     <title>Rock Paper Scissors V2</title>
     <link rel="stylesheet" href="./dist/css/style.min.css">
 </head>
+
 <body>
-    
-    <h1>Rock Paper Scissors V2</h1>
+
+    <div id="app">
+
+        <h1>Rock Paper Scissors V2</h1>
+
+        <div class="weapon-select">
+            <form>
+                <input type="radio" name="weapon" id="rock" value="rock">
+                <label for="rock">Rock</label>
+                <input type="radio" name="weapon" id="paper" value="paper">
+                <label for="paper">Paper</label>
+                <input type="radio" name="weapon" id="scissors" value="scissors">
+                <label for="scissors">Scissors</label>
+            </form>
+        </div>
+
+        <div class="show-weapon">
+            <div class="player1">
+                Player 1 weapon
+                <span class="player1__weapon-value">weapon</span>
+            </div>
+            <div class="player2">
+                Player 2 weapon
+                <span class="player2__weapon-value">weapon</span>
+            </div>
+        </div>
+
+        <div class="show-result">
+            <div class="result">
+                <div class="result__p1">P1</div>
+                <div class="result__p2">P2</div>
+            </div>
+        </div>
+
+        <div class="play-again">
+            <a href="javascript:void(0)" class="play-again__btn">Play again</a>
+        </div>
+
+    </div>
 
 
     <script src="./dist/js/main.js"></script>
 </body>
+
 </html>
