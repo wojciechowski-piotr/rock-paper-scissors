@@ -1,7 +1,11 @@
-const game = (tekst) => {
+import Weapon from './create-weapon';
 
-    console.log(tekst);
+class Game {
+
+    compareWeapons() {
+
+
+
+    }
 
 }
-
-game("coś tam");

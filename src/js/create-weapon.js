@@ -1,21 +1,25 @@
 class Weapon {
     constructor(name, beat) {
-
         this.name = name;
         this.beat = beat;
-
     }
 
     createWeapon() {
-
         const weaponContainer = document.querySelector(".weapon-select > form");
 
-        weaponContainer.innerHTML += `
-        <input type="radio" name="weapon" id="${this.name}" value="${this.name}">
-        <label for="${this.name}">${this.name}</label>
-        `
-    }
+        const input = document.createElement("input");
+        const label = document.createElement("label");
 
+        input.setAttribute("type", "radio");
+        input.setAttribute("name", "weapon");
+        input.setAttribute("id", this.name);
+        input.setAttribute("value", this.name);
+        label.setAttribute("for", this.name);
+        label.textContent = this.name;
+
+        weaponContainer.appendChild(input);
+        weaponContainer.appendChild(label);
+    }
 }
 
 export default Weapon;
