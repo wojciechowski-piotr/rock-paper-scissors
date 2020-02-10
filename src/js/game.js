@@ -1,9 +1,7 @@
-const game = () => {
+const game = (tekst) => {
 
-    console.log("game");
+    console.log(tekst);
 
 }
 
-game();
-
-export default game;
+game("coś tam");

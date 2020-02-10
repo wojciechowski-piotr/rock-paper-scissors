@@ -1,3 +1,7 @@
-import game from './game';
+import Weapon from './create-weapon';
 
-console.log('hello');
+const weapons = [new Weapon("rock", "scissors"),
+                 new Weapon("scissors", "paper"),
+                 new Weapon("paper", "rock")];
+
+weapons.forEach(el => el.createWeapon());
