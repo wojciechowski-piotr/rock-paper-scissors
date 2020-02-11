@@ -9,3 +9,6 @@ const players = [new Player("P1", "human"),
                  new Player("P2-AI", "computer")];
 
 weapons.forEach(el => el.createWeapon());
+players.forEach(el => el.chooseWeapon());
+
+export default weapons;
