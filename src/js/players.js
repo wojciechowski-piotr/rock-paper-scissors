@@ -1,35 +1,30 @@
-import weapons from './index';
+import weapons from './weapons-list';
 
 class Player {
     constructor(name, control) {
         this.name = name;
         this.control = control;
-        this.weapon = null;
     }
-    chooseWeapon() {
+    chooseWeapon(callback) {
         const radios = [...document.querySelectorAll("input[type='radio']")];
+        const selectedWeapon = document.querySelector(".player1__weapon-value");
 
-        if (this.control === "human") {
-            const selectedWeapon = document.querySelector(".player1__weapon-value");
+        radios.forEach(el => {
+            el.addEventListener("click", () => {
+                selectedWeapon.innerHTML = el.value;
 
-            radios.forEach(el => {
-                el.addEventListener("click", () => {
-                    selectedWeapon.innerHTML = el.value;
-                    this.weapon = el.value;
-                })
+                function aiGenerate() {
+                    const computerWeapon = document.querySelector(".player2__weapon-value");
+                    const randomWeaponsId = weapons[Math.round(Math.random() * (weapons.length - 1))];
+
+                    computerWeapon.innerHTML = randomWeaponsId.name;
+                }
+
+                aiGenerate();
+                callback();
             })
-        } else if (this.control === "computer") {
-            const compWeapon = document.querySelector(".player2__weapon-value");
-            radios.forEach(el => {
-                el.addEventListener("click", () => {
+        })
 
-                    let compWeaponId = weapons[Math.round(Math.random() * (weapons.length - 1))];
-
-                    compWeapon.innerHTML = compWeaponId.name;
-                    this.weapon = compWeaponId.name;
-                })
-            })
-        }
     }
 }
 

@@ -1,14 +1,7 @@
-import Weapon from './create-weapon';
-import Player from './players';
+import weapons from './weapons-list';
+import players from './players-list';
+import Game from './game';
 
-const weapons = [new Weapon("rock", "scissors"),
-                 new Weapon("scissors", "paper"),
-                 new Weapon("paper", "rock")];
+const game = new Game(3, 4);
 
-const players = [new Player("P1", "human"),
-                 new Player("P2-AI", "computer")];
-
-weapons.forEach(el => el.createWeapon());
-players.forEach(el => el.chooseWeapon());
-
-export default weapons;
+game.startGame();

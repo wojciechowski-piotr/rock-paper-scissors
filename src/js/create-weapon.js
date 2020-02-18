@@ -1,3 +1,5 @@
+import Player from "./players";
+
 class Weapon {
     constructor(name, beat) {
         this.name = name;
@@ -19,6 +21,7 @@ class Weapon {
 
         weaponContainer.appendChild(input);
         weaponContainer.appendChild(label);
+
     }
 }
 
