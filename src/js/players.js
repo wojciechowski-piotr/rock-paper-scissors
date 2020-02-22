@@ -6,15 +6,15 @@ class Player {
         this.control = control;
     }
     chooseWeapon(callback) {
-        const radios = [...document.querySelectorAll("input[type='radio']")];
-        const selectedWeapon = document.querySelector(".player1__weapon-value");
+        const radios = [...document.querySelectorAll('input[type=\'radio\']')];
+        const selectedWeapon = document.querySelector('.player1__weapon-value');
 
         radios.forEach(el => {
-            el.addEventListener("click", () => {
+            el.addEventListener('click', () => {
                 selectedWeapon.innerHTML = el.value;
 
                 function aiGenerate() {
-                    const computerWeapon = document.querySelector(".player2__weapon-value");
+                    const computerWeapon = document.querySelector('.player2__weapon-value');
                     const randomWeaponsId = weapons[Math.round(Math.random() * (weapons.length - 1))];
 
                     computerWeapon.innerHTML = randomWeaponsId.name;
@@ -22,8 +22,8 @@ class Player {
 
                 aiGenerate();
                 callback();
-            })
-        })
+            });
+        });
 
     }
 }

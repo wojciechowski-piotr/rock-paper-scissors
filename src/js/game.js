@@ -1,5 +1,3 @@
-import Weapon from './create-weapon';
-import Player from './players';
 import weapons from './weapons-list';
 import players from './players-list';
 
@@ -8,8 +6,8 @@ class Game {
 
         this.pointLimit = pointLimit;
         this.rounds = rounds;
-        this.P1score = 0;
-        this.P2score = 0;
+        this.p1score = 0;
+        this.p2score = 0;
     }
     startGame() {
 
@@ -18,23 +16,21 @@ class Game {
         
         function compareWeapons() {
             
-            const p1Weapon = document.querySelector(".player1__weapon-value").textContent;
-            const p2Weapon = document.querySelector(".player2__weapon-value").textContent;
+            const p1Weapon = document.querySelector('.player1__weapon-value').textContent;
+            const p2Weapon = document.querySelector('.player2__weapon-value').textContent;
 
             const p1WeaponId = weapons.findIndex(el => el.name === p1Weapon);
             const p2WeaponId = weapons.findIndex(el => el.name === p2Weapon);
 
-            console.log(p1WeaponId);
-
+            
             if (p1Weapon === weapons[p2WeaponId].beat) {
-                console.log("P2 win");
+                console.log('P2 win');
             } else if (p2Weapon === weapons[p1WeaponId].beat) {
-                console.log("P1 win");
+                console.log('P1 win');
             } else if (p1Weapon === p2Weapon) {
-                console.log("Draw");
+                console.log('Draw');
             }
         }
-
     }
 }
 
