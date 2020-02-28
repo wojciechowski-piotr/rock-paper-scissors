@@ -144,3 +144,36 @@ h1 {
         }
     }
 }
+
+.start-game {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color:$gray;
+    z-index: 1;
+    padding: 0 20px;
+
+    display: none; //flex
+    flex-flow: column;
+    justify-content: center;
+
+    form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+        label {
+            text-align: left;
+        }
+        input {
+            width: 100%;
+        }
+    }
+
+    a {
+        color: $primary-text-color;
+        font-size: 1.5rem;
+    }
+}

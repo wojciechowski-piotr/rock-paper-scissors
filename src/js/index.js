@@ -6,8 +6,8 @@ game.startGame();
 
 /* 
 
-2. play again;
-3. nowa gra - formularz;
-4. game over - modal box z wynikami;
+1. play again - refresh??;
+2. przypisanie klawiszy do broni;
+3. nowa gra - formularz - player names, point and round limit - submit;
 
 */

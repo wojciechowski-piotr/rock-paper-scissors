@@ -13,6 +13,7 @@ class Game {
     startGame() {
         weapons.forEach(el => el.createWeapon());
         chooseWeapon.call(this);
+        this.playAgain();
     }
     compareWeapons() {
         const p1Weapon = document.querySelector('.player1__weapon-value').textContent;
@@ -48,9 +49,6 @@ class Game {
             console.log(`End round ${this.rounds}`);
         }
     }
-    /* roundCounter() {
-
-    } */
     displayResult() {
         const p1PointsDisplay = document.querySelector('.result__p1');
         const p2PointsDisplay = document.querySelector('.result__p2');
@@ -59,6 +57,8 @@ class Game {
 
         const winnerDisplay = document.querySelector('.winner');
 
+        const radios = [...document.querySelectorAll('input[type="radio"]')];
+
         p1PointsDisplay.innerHTML = this.p1Points;
         p2PointsDisplay.innerHTML = this.p2Points;
         p1RoundsDisplay.innerHTML = this.p1Rounds;
@@ -66,9 +66,24 @@ class Game {
 
         if (this.p1Rounds === this.roundsLimit) {
             winnerDisplay.innerHTML = 'Player 1 win!!!';
+            radios.forEach(el => {
+                el.setAttribute('disabled', 'true');
+                el.checked = false;
+            });
         } else if (this.p2Rounds === this.roundsLimit) {
             winnerDisplay.innerHTML = 'Player 2 win!!!';
+            radios.forEach(el => {
+                el.setAttribute('disabled', 'true');
+                el.checked = false;
+            });
         }
+    }
+    playAgain() {
+        const playAgainBtn = document.querySelector('.play-again__btn');
+
+        playAgainBtn.addEventListener('click', () => {
+            window.location.reload(true);
+        });
     }
 }
 
@@ -90,7 +105,6 @@ function chooseWeapon() {
             aiGenerate();
             this.compareWeapons();
             this.pointCounter();
-            // this.roundCounter();
             this.displayResult();
         });
     });

@@ -12,6 +12,22 @@
 <body>
 
     <div id="app">
+        <div class="start-game">
+            <div class="start-game__form">
+                <form>
+                    <label for="p1name">Player 1 name:</label>
+                    <input type="text" name="p1name" id="p1name" placeholder="Player 1">
+                    <label for="p2name">Player 2 name:</label>
+                    <input type="text" name="p2name" id="p2name" placeholder="Player 2">
+                    <label for="point-limit">Point limit:</label>
+                    <input type="number" name="point-limit" id="point-limit" placeholder="3">
+                    <label for="round-limit">Round limit:</label>
+                    <input type="number" name="round-limit" id="round-limit" placeholder="3">
+                    <input type="reset" value="reset">
+                </form>
+            </div>
+            <a class="start-game__btn" href="javascript: void(0)">New game</a>
+        </div>
 
         <h1>Rock Paper Scissors V2</h1>
 
