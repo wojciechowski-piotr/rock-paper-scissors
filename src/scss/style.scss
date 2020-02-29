@@ -17,6 +17,10 @@ body {
 
 #app {
     margin: 0 20px;
+    @include screen('desktop') {
+        max-width: 860px;
+        margin: 0 auto;
+    }
 }
 
 h1 {
@@ -141,6 +145,10 @@ h1 {
 
         &:hover {
             background-color: red;
+        }
+        @include screen('desktop') {
+            display: inline-block;
+            padding: 0.5rem 2rem;
         }
     }
 }
