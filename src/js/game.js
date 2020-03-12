@@ -1,19 +1,27 @@
 import weapons from './weapons-list';
 
 class Game {
-    constructor(pointLimit, roundsLimit) {
-        this.pointLimit = pointLimit;
-        this.roundsLimit = roundsLimit;
+    constructor() {
+        this.pointLimit = null;
+        this.roundsLimit = null;
         this.rounds = 0;
         this.p1Points = 0;
         this.p2Points = 0;
         this.p1Rounds = 0;
         this.p2Rounds = 0;
+        this.p1Name = null;
+        this.p2Name = null;
     }
     startGame() {
+        const startBtn = document.querySelector('.start-game__btn');
+
+        startBtn.addEventListener('click', this.newGame);
         weapons.forEach(el => el.createWeapon());
-        chooseWeapon.call(this);
+        this.chooseWeapon();
         this.playAgain();
+
+        console.log(this.pointLimit);
+        console.log(this.roundsLimit);
     }
     compareWeapons() {
         const p1Weapon = document.querySelector('.player1__weapon-value').textContent;
@@ -82,7 +90,63 @@ class Game {
         const playAgainBtn = document.querySelector('.play-again__btn');
 
         playAgainBtn.addEventListener('click', () => {
+            this.p1Name = null;
+            this.p2Name = null;
+            this.p1NameInput = '';
+            this.p2NameInput = '';
             window.location.reload(true);
+        });
+    }
+    newGame() {
+
+        const p1NameInput = document.querySelector('#p1name').value;
+        const p2NameInput = document.querySelector('#p2name').value;
+        const pointInput = document.querySelector('#point-limit').value;
+        const roundInput = document.querySelector('#round-limit').value;
+
+        const p1Name = document.querySelector('.p1-name');
+        const p2Name = document.querySelector('.p2-name');
+
+        // const startBtn = document.querySelector('.start-game__btn');
+
+        const startGameBox = document.querySelector('.start-game');
+
+        if (p1NameInput == '' || p2NameInput == '') {
+            window.alert('Type something');
+        } else {
+
+            this.p1Name = p1NameInput;
+            this.p2Name = p2NameInput;
+
+            p1Name.innerHTML = this.p1Name;
+            console.log(this.p1Name);
+            console.log(this.p2Name);
+            p2Name.innerHTML = this.p2Name;
+
+            this.pointLimit = parseInt(pointInput);
+            this.roundsLimit = parseInt(roundInput);
+            console.log(this.pointLimit);
+            console.log(this.roundsLimit);
+
+            startGameBox.style.display = 'none';
+        }
+
+    }
+    chooseWeapon() {
+        const radios = [...document.querySelectorAll('input[type="radio"]')];
+        const selectedWeapon = document.querySelector('.player1__weapon-value');
+
+        radios.forEach(el => {
+            el.addEventListener('click', () => {
+                selectedWeapon.innerHTML = el.value;
+
+                aiGenerate();
+                this.compareWeapons();
+                this.pointCounter();
+                this.displayResult();
+                console.log(this.pointLimit);
+                console.log(this.roundsLimit);
+            });
         });
     }
 }
@@ -92,22 +156,6 @@ function aiGenerate() {
     const randomWeaponsId = weapons[Math.round(Math.random() * (weapons.length - 1))];
 
     computerWeapon.innerHTML = randomWeaponsId.name;
-}
-
-function chooseWeapon() {
-    const radios = [...document.querySelectorAll('input[type="radio"]')];
-    const selectedWeapon = document.querySelector('.player1__weapon-value');
-
-    radios.forEach(el => {
-        el.addEventListener('click', () => {
-            selectedWeapon.innerHTML = el.value;
-
-            aiGenerate();
-            this.compareWeapons();
-            this.pointCounter();
-            this.displayResult();
-        });
-    });
 }
 
 export default Game;
