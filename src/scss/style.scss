@@ -33,8 +33,10 @@ h1 {
     margin-bottom: 2rem;
 
     form {
+        background-color: $light-gray;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        padding: 0.5rem 0;
 
         input[type="radio"] {
             display: none;
@@ -44,16 +46,13 @@ h1 {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 5rem;
+            height: 4rem;
             user-select: none;
             cursor: pointer;
             text-transform: uppercase;
             transition: background-color 0.2s;
-
-            &:hover {
-                background-color: red;
-            }
-
+            border-right: 1px solid $gray;
+            
             &:last-child {
                 border-right: 0;
             }
@@ -167,15 +166,25 @@ h1 {
     flex-flow: column;
     justify-content: center;
 
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 4rem;
+    }
+
     form {
         display: grid;
         margin: 0 auto;
         max-width: 600px;
-        grid-template-columns: 2fr 3fr;
+        grid-template-columns: auto 3fr;
         gap: 1rem;
         margin-bottom: 2rem;
         label {
-            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: right;
+            align-self: center;
         }
         input {
             width: 100%;
@@ -185,9 +194,11 @@ h1 {
             color: $primary-text-color;
             &[type="reset"] {
                 grid-column: 1 / 3;
+                justify-self: end;
+                width: auto;
                 background-color: $gray;
                 color: $primary-text-color;
-                margin-top: 2rem;
+                // margin-top: 1rem;
             }
             &[type="number"] {
                 -moz-appearance: textfield;
@@ -199,8 +210,19 @@ h1 {
         }
     }
 
-    a {
+    /* a {
+        display: inline-block;
         color: $primary-text-color;
         font-size: 1.5rem;
+    } */
+
+    &__btn {
+        background-color: $primary-text-color;
+        padding: 1rem 2rem;
+        color: $light-gray;
+        text-decoration: none;
+            &:hover {
+                background-color: $secondary-text-color;
+            }
     }
 }

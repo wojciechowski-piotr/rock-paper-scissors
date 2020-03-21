@@ -2,8 +2,8 @@ import weapons from './weapons-list';
 
 class Game {
     constructor() {
-        this.pointLimit = null;
-        this.roundsLimit = null;
+        this.pointLimit = 3;
+        this.roundsLimit = 3;
         this.rounds = 0;
         this.p1Points = 0;
         this.p2Points = 0;
@@ -19,9 +19,6 @@ class Game {
         weapons.forEach(el => el.createWeapon());
         this.chooseWeapon();
         this.playAgain();
-
-        console.log(this.pointLimit);
-        console.log(this.roundsLimit);
     }
     compareWeapons() {
         const p1Weapon = document.querySelector('.player1__weapon-value').textContent;
@@ -99,10 +96,10 @@ class Game {
     }
     newGame() {
 
-        const p1NameInput = document.querySelector('#p1name').value;
-        const p2NameInput = document.querySelector('#p2name').value;
-        const pointInput = document.querySelector('#point-limit').value;
-        const roundInput = document.querySelector('#round-limit').value;
+        let p1NameInput = document.querySelector('#p1name').value;
+        let p2NameInput = document.querySelector('#p2name').value;
+        // const pointInput = document.querySelector('#point-limit').value;
+        // const roundInput = document.querySelector('#round-limit').value;
 
         const p1Name = document.querySelector('.p1-name');
         const p2Name = document.querySelector('.p2-name');
@@ -111,25 +108,28 @@ class Game {
 
         const startGameBox = document.querySelector('.start-game');
 
-        if (p1NameInput == '' || p2NameInput == '') {
-            window.alert('Type something');
-        } else {
-
-            this.p1Name = p1NameInput;
-            this.p2Name = p2NameInput;
-
-            p1Name.innerHTML = this.p1Name;
-            console.log(this.p1Name);
-            console.log(this.p2Name);
-            p2Name.innerHTML = this.p2Name;
-
-            this.pointLimit = parseInt(pointInput);
-            this.roundsLimit = parseInt(roundInput);
-            console.log(this.pointLimit);
-            console.log(this.roundsLimit);
-
-            startGameBox.style.display = 'none';
+        if (p1NameInput == '') {
+            p1NameInput = 'Player 1';
+        } 
+        
+        if (p2NameInput == '') {
+            p2NameInput = 'Player 2';
         }
+
+        this.p1Name = p1NameInput;
+        this.p2Name = p2NameInput;
+
+        p1Name.innerHTML = this.p1Name;
+        console.log(this.p1Name);
+        console.log(this.p2Name);
+        p2Name.innerHTML = this.p2Name;
+
+        /* this.pointLimit = parseInt(pointInput);
+        this.roundsLimit = parseInt(roundInput);
+        console.log(this.pointLimit);
+        console.log(this.roundsLimit); */
+
+        startGameBox.style.display = 'none';
 
     }
     chooseWeapon() {
@@ -144,8 +144,6 @@ class Game {
                 this.compareWeapons();
                 this.pointCounter();
                 this.displayResult();
-                console.log(this.pointLimit);
-                console.log(this.roundsLimit);
             });
         });
     }
