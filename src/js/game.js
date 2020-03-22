@@ -3,7 +3,7 @@ import weapons from './weapons-list';
 class Game {
     constructor() {
         this.pointLimit = 3;
-        this.roundsLimit = 3;
+        this.roundsLimit = 1;
         this.rounds = 0;
         this.p1Points = 0;
         this.p2Points = 0;
@@ -27,24 +27,28 @@ class Game {
         const p1WeaponId = weapons.findIndex(el => el.name === p1Weapon);
         const p2WeaponId = weapons.findIndex(el => el.name === p2Weapon);
 
+        this.newGame.call(this);
+
         if (p1Weapon === weapons[p2WeaponId].beat) {
             this.p2Points++;
-            console.log(`Player 2 win => ${this.p1Points} : ${this.p2Points}`);
+            console.log(`${this.p2Name} win => ${this.p1Points} : ${this.p2Points}`);
         } else if (p2Weapon === weapons[p1WeaponId].beat) {
             this.p1Points++;
-            console.log(`Player 1 win => ${this.p1Points} : ${this.p2Points}`);
+            console.log(`${this.p1Name} win => ${this.p1Points} : ${this.p2Points}`);
         } else if (p1Weapon === p2Weapon) {
             console.log(`Draw => ${this.p1Points} : ${this.p2Points}`);
         }
     }
     pointCounter() {
+        this.newGame.call(this);
+
         if (this.p1Points === this.pointLimit) {
             this.p1Rounds++;
-            console.log('Player 1 win round!!!');
+            console.log(`${this.p1Name} win round!!!`);
 
         } else if (this.p2Points === this.pointLimit) {
             this.p2Rounds++;
-            console.log('Player 2 win round!!!');
+            console.log(`${this.p2Name} win round!!!`);
         }
 
         if (this.p1Points === this.pointLimit || this.p2Points === this.pointLimit) {
@@ -55,6 +59,8 @@ class Game {
         }
     }
     displayResult() {
+        this.newGame.call(this);
+
         const p1PointsDisplay = document.querySelector('.result__p1');
         const p2PointsDisplay = document.querySelector('.result__p2');
         const p1RoundsDisplay = document.querySelector('.rounds__p1');
@@ -69,14 +75,15 @@ class Game {
         p1RoundsDisplay.innerHTML = this.p1Rounds;
         p2RoundsDisplay.innerHTML = this.p2Rounds;
 
+
         if (this.p1Rounds === this.roundsLimit) {
-            winnerDisplay.innerHTML = 'Player 1 win!!!';
+            winnerDisplay.innerHTML = `${this.p1Name} win!!!`;
             radios.forEach(el => {
                 el.setAttribute('disabled', 'true');
                 el.checked = false;
             });
         } else if (this.p2Rounds === this.roundsLimit) {
-            winnerDisplay.innerHTML = 'Player 2 win!!!';
+            winnerDisplay.innerHTML = `${this.p2Name} win!!!`;
             radios.forEach(el => {
                 el.setAttribute('disabled', 'true');
                 el.checked = false;
@@ -94,44 +101,6 @@ class Game {
             window.location.reload(true);
         });
     }
-    newGame() {
-
-        let p1NameInput = document.querySelector('#p1name').value;
-        let p2NameInput = document.querySelector('#p2name').value;
-        // const pointInput = document.querySelector('#point-limit').value;
-        // const roundInput = document.querySelector('#round-limit').value;
-
-        const p1Name = document.querySelector('.p1-name');
-        const p2Name = document.querySelector('.p2-name');
-
-        // const startBtn = document.querySelector('.start-game__btn');
-
-        const startGameBox = document.querySelector('.start-game');
-
-        if (p1NameInput == '') {
-            p1NameInput = 'Player 1';
-        } 
-        
-        if (p2NameInput == '') {
-            p2NameInput = 'Player 2';
-        }
-
-        this.p1Name = p1NameInput;
-        this.p2Name = p2NameInput;
-
-        p1Name.innerHTML = this.p1Name;
-        console.log(this.p1Name);
-        console.log(this.p2Name);
-        p2Name.innerHTML = this.p2Name;
-
-        /* this.pointLimit = parseInt(pointInput);
-        this.roundsLimit = parseInt(roundInput);
-        console.log(this.pointLimit);
-        console.log(this.roundsLimit); */
-
-        startGameBox.style.display = 'none';
-
-    }
     chooseWeapon() {
         const radios = [...document.querySelectorAll('input[type="radio"]')];
         const selectedWeapon = document.querySelector('.player1__weapon-value');
@@ -144,8 +113,59 @@ class Game {
                 this.compareWeapons();
                 this.pointCounter();
                 this.displayResult();
+                
             });
         });
+    }
+
+    newGame() {
+
+        let p1NameInput = document.querySelector('#p1name').value;
+        let p2NameInput = document.querySelector('#p2name').value;
+        let pointInputBox = document.querySelector('#point-limit');
+        let pointInput = document.querySelector('#point-limit').value;
+        let roundInputBox = document.querySelector('#round-limit');
+        let roundInput = document.querySelector('#round-limit').value;
+    
+        const p1Name = document.querySelector('.p1-name');
+        const p2Name = document.querySelector('.p2-name');
+        
+        const startGameBox = document.querySelector('.start-game');
+        const startGameBtn = document.querySelector('.start-game__btn');
+
+        pointInput < 0 || roundInput < 0 ? 
+            startGameBox.style.display = 'flex' :
+            startGameBox.style.display = 'none' ;
+
+
+        if (p1NameInput == '') {
+            p1NameInput = 'Player 1';
+            this.p1Name = p1NameInput;
+        }
+        
+        if (p2NameInput == '') {
+            p2NameInput = 'Player 2';
+            this.p1Name = p2NameInput;
+        }
+    
+        this.p1Name = p1NameInput;
+        this.p2Name = p2NameInput;
+    
+        p1Name.innerHTML = this.p1Name;
+        p2Name.innerHTML = this.p2Name;
+
+        if (pointInput == '') {
+            pointInput = this.pointLimit;
+        }
+        if (roundInput == '') {
+            roundInput = this.roundsLimit;
+        }
+
+        this.pointLimit = parseInt(pointInput);
+        this.roundsLimit = parseInt(roundInput);
+    
+        // return startGameBox.style.display = 'none';
+    
     }
 }
 

@@ -198,7 +198,6 @@ h1 {
                 width: auto;
                 background-color: $gray;
                 color: $primary-text-color;
-                // margin-top: 1rem;
             }
             &[type="number"] {
                 -moz-appearance: textfield;
@@ -209,12 +208,6 @@ h1 {
             }
         }
     }
-
-    /* a {
-        display: inline-block;
-        color: $primary-text-color;
-        font-size: 1.5rem;
-    } */
 
     &__btn {
         background-color: $primary-text-color;
