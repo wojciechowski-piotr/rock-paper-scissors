@@ -1,15 +1,15 @@
-@import 'reset.scss';
-@import 'variables.scss';
-@import 'mixins.scss';
+@import "reset.scss";
+@import "variables.scss";
+@import "mixins.scss";
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
     line-height: 1.6;
     text-align: center;
@@ -17,7 +17,7 @@ body {
 
 #app {
     margin: 0 20px;
-    @include screen('desktop') {
+    @include screen("desktop") {
         max-width: 860px;
         margin: 0 auto;
     }
@@ -27,6 +27,12 @@ h1 {
     font-size: 1.5rem;
     font-weight: 700;
     margin: 20px 0 2rem;
+}
+
+button {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .weapon-select {
@@ -52,20 +58,20 @@ h1 {
             text-transform: uppercase;
             transition: background-color 0.2s;
             border-right: 1px solid $gray;
-            
+
             &:last-child {
                 border-right: 0;
             }
         }
 
-        input[type="radio"]:checked+label {
+        input[type="radio"]:checked + label {
             background-color: $secondary-color;
         }
     }
 }
 
 .show-weapon,
-.show-result>.result,
+.show-result > .result,
 .rounds {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -89,14 +95,13 @@ h1 {
 }
 
 .show-result {
-
     .result,
     .rounds {
         font-weight: 700;
         position: relative;
 
         &::before {
-            content: '';
+            content: "";
             position: absolute;
             width: 100%;
             font-weight: 300;
@@ -111,7 +116,7 @@ h1 {
         color: $primary-text-color;
 
         &::before {
-            content: 'Points';
+            content: "Points";
         }
     }
 
@@ -120,7 +125,7 @@ h1 {
         color: $light-gray;
 
         &::before {
-            content: 'Rounds';
+            content: "Rounds";
         }
     }
 }
@@ -137,17 +142,19 @@ h1 {
 
     &__btn {
         display: block;
+        width: 100%;
         background-color: $primary-text-color;
-        padding: 0.5rem 0;
+        padding: 0.75rem 0;
         color: $light-gray;
         text-decoration: none;
 
         &:hover {
             background-color: red;
         }
-        @include screen('desktop') {
+        @include screen("desktop") {
             display: inline-block;
-            padding: 0.5rem 2rem;
+            width: auto;
+            padding: 0.75rem 2rem;
         }
     }
 }
@@ -158,7 +165,7 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color:$primary-color;
+    background-color: $primary-color;
     z-index: 1;
     padding: 0 20px;
 
@@ -202,7 +209,8 @@ h1 {
             &[type="number"] {
                 -moz-appearance: textfield;
                 margin: 0;
-                &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+                &::-webkit-inner-spin-button,
+                &::-webkit-outer-spin-button {
                     -webkit-appearance: none;
                 }
             }
@@ -214,8 +222,8 @@ h1 {
         padding: 1rem 2rem;
         color: $light-gray;
         text-decoration: none;
-            &:hover {
-                background-color: $secondary-text-color;
-            }
+        &:hover {
+            background-color: $secondary-text-color;
+        }
     }
 }

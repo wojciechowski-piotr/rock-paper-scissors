@@ -122,16 +122,13 @@ class Game {
 
         let p1NameInput = document.querySelector('#p1name').value;
         let p2NameInput = document.querySelector('#p2name').value;
-        let pointInputBox = document.querySelector('#point-limit');
         let pointInput = document.querySelector('#point-limit').value;
-        let roundInputBox = document.querySelector('#round-limit');
         let roundInput = document.querySelector('#round-limit').value;
     
         const p1Name = document.querySelector('.p1-name');
         const p2Name = document.querySelector('.p2-name');
         
         const startGameBox = document.querySelector('.start-game');
-        const startGameBtn = document.querySelector('.start-game__btn');
 
         pointInput < 0 || roundInput < 0 ? 
             startGameBox.style.display = 'flex' :
@@ -163,9 +160,7 @@ class Game {
 
         this.pointLimit = parseInt(pointInput);
         this.roundsLimit = parseInt(roundInput);
-    
-        // return startGameBox.style.display = 'none';
-    
+        
     }
 }
 
